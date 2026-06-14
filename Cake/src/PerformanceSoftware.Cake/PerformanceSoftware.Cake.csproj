@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>AstonMartinF1.PerformanceSoftware.Cake</AssemblyName>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <Description>This package contains common Cake build files used within Performance Software</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Content/**/*">
+      <Pack>True</Pack>
+      <PackagePath>content</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

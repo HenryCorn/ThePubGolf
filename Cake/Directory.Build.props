@@ -1,0 +1,5 @@
+<Project>
+  <ItemGroup>
+    <PackageReference Include="AstonMartinF1.PerformanceSoftware.Build" />
+  </ItemGroup>
+</Project>

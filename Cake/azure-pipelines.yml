@@ -1,0 +1,43 @@
+name: $(Rev:r)
+
+pool:
+  name: AzUbuntu
+parameters:
+- name: deployPreview
+  type: boolean
+  default: false
+stages:
+- stage: 'build'
+  displayName: 'Build'
+  jobs:
+  - job: build
+    workspace:
+      clean: all
+    steps:
+    - task: Cake@2
+      name: Cake
+      displayName: Cake
+      inputs:
+        script: build.cake
+        target: Pack
+        verbosity: Verbose
+        useBuildAgentNuGetExe: true
+- stage: 'publish'
+  displayName: 'publish'
+  condition: |
+    and(succeeded(),
+      or(eq(variables['Build.SourceBranch'], 'refs/heads/main'),
+      or(eq(${{parameters.deployPreview}}, true), eq(variables['Build.SourceBranch'], 'refs/heads/develop'))))
+  jobs:
+  - job: publish
+    workspace:
+      clean: all
+    steps:
+    - download: current
+    - task: NuGetCommand@2
+      displayName: 'NuGet push'
+      inputs:
+        command: push
+        packagesToPush: '$(Pipeline.Workspace)/dist/*.nupkg'
+        nuGetFeedType: external
+        # publishFeedCredentials: 'Internal NuGet' # Removed for open source version. Configure your own feed here.

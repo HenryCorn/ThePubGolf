@@ -1,0 +1,12 @@
+###############################
+# Core EditorConfig Options   #
+###############################
+
+root = true
+
+[*]
+indent_style = space
+guidelines = 120, 140
+insert_final_newline = false
+charset = utf-8
+indent_size = 4

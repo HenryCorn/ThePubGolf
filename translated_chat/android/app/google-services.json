@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "171288332254",
+    "project_id": "chatslate-4af88",
+    "storage_bucket": "chatslate-4af88.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:171288332254:android:18f6ea1d88507e9c377f4f",
+        "android_client_info": {
+          "package_name": "com.quique.chatslate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD65eGSA9AyytkzO3yU7EOtpwJ1q2nhsec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

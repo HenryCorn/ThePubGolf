@@ -1,0 +1,7 @@
+<Project>
+  <ItemGroup>
+    <PackageReference Update="AstonMartinF1.PerformanceSoftware.Build" Version="*">
+	    <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>

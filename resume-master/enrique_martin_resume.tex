@@ -1,0 +1,176 @@
+%-------------------------
+% Resume in LateX
+% Author : Sourabh Bajaj
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{} % Clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generated PDF is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+% Just in case someone needs a heading that does not need to be in a list
+\newcommand{\resumeHeading}[4]{
+    \begin{tabular*}{0.99\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small #3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small #3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small #1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeItemPlain}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING-----------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\href{https://quiquemartin.dev}{\Large Enrique Mart\'in Oca\~na}} & \href{mailto:quiquemartinocana@gmail.com}{quiquemartinocana@gmail.com} $|$ +44 7444 241378\\
+  Bicester, Oxfordshire & \href{https://quiquemartin.dev}{quiquemartin.dev} $|$ \href{https://linkedin.com/in/enriquemaoc}{linkedin.com/in/enriquemaoc}\\
+\end{tabular*}
+
+\vspace{1pt}
+\textit{\small Software engineer with 4+ years experience in C\#/.NET and React across Aston Martin F1 and Disney. Specialises in distributed systems, observability, and agentic AI. ScotlandIS Young Software Engineer of the Year 2023. UK Settled Status.}
+\vspace{-10pt}
+
+%-----------EXPERIENCE-----------------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Aston Martin Aramco F1 Team}{Silverstone, UK}
+      {Software Engineer}{Sep 2025 -- Present}
+      \resumeSubSubheading
+        {Graduate Software Engineer}{Sep 2023 -- Sep 2025}
+      \resumeItemListStart
+        \resumeItemPlain{Built C\# and .NET 8 simulation infrastructure orchestrating high-volume concurrent batches of diverse simulation types completing across race-weekend windows; applied OTEL auto-instrumentation to surface a post-processing bottleneck and cut simulation turnaround by \(\sim\)30\%.}
+        \resumeItemPlain{Designed internal APIs, CLI tools and orchestration layers managing complex simulation models and post-processing workflows at scale.}
+        \resumeItemPlain{Led delivery of a rule-driven validation engine translating F1 regulatory constraints into deterministic evaluation code, adopted across the full simulation platform.}
+        \resumeItemPlain{Introduced OpenTelemetry tracing and metrics into the Grafana/Loki stack, reducing mean time-to-diagnose from \(\sim\)40 minutes to under 5 during race-weekend on-call windows.}
+        \resumeItemPlain{Authored team-wide agentic AI coding standards --- Claude/Cursor configuration, context-engineering patterns, AI code-review rubrics --- adopted across a security-sensitive real-time codebase.}
+        \item[]\small\textit{C\#, .NET 8, React, GraphQL, MongoDB, InfluxDB, Kafka, Docker, Kubernetes, Azure DevOps, OpenTelemetry}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Santander Global Tech}{M\'alaga, Spain}
+      {Software Engineer Analyst}{Apr 2023 -- Sep 2023}
+      \resumeItemListStart
+        \resumeItemPlain{Built Python data pipelines aggregating and normalising financial data from disparate systems, replacing manual Excel reconciliation for \(\sim\)10 analysts.}
+        \resumeItemPlain{Delivered internal dashboards (Dash/Plotly) giving finance and operations teams self-serve access to metrics previously requiring analyst requests.}
+        \item[]\small\textit{Python, Pandas, Dash, Plotly, GitHub Actions}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {The Walt Disney Company}{London, UK}
+      {Technical Engineer Intern}{Jun 2021 -- Jun 2022}
+      \resumeItemListStart
+        \resumeItemPlain{Built internal tools in ASP.NET and React streamlining asset management and content delivery workflows across multiple Disney departments.}
+        \resumeItemPlain{Refactored legacy C\# backend services into a modular, clean-architecture pattern, measurably improving testability and extensibility.}
+        \resumeItemPlain{Shipped accessibility improvements to React front-ends (ARIA standards) and supported rollout of CI/CD pipelines across internal applications.}
+        \resumeItemPlain{Worked cross-functionally with content operations, legal and engineering to gather requirements and release tooling iteratively.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University of Strathclyde}{Glasgow, Scotland}
+      {BSc (Hons) Software Engineering --- Pass with Distinction; industrial placement at Disney}{Sep 2018 -- Apr 2023}
+  \resumeSubHeadingListEnd
+
+%--------SKILLS------------
+\section{Skills}
+  \resumeSubHeadingListStart
+    \resumeSubItem{Languages \& Frameworks}{C\#, .NET 8/10, TypeScript, JavaScript, React, Python, SQL, GraphQL}
+    \resumeSubItem{Cloud \& Infrastructure}{Azure, AWS, Docker, Kubernetes (AKS), Terraform, GitHub Actions, Azure DevOps}
+    \resumeSubItem{Data}{SQL Server, PostgreSQL, MongoDB, InfluxDB, vector DBs (pgvector)}
+    \resumeSubItem{Messaging}{Kafka, RabbitMQ, Azure Service Bus}
+    \resumeSubItem{Practices}{TDD, Clean Architecture, SOLID, DDD, CI/CD, OpenTelemetry, Grafana, Loki, Agile/Scrum}
+    \resumeSubItem{AI \& Tooling}{Microsoft.Extensions.AI, Semantic Kernel, MCP (C\# SDK), RAG patterns, Claude Code, GitHub Copilot}
+  \resumeSubHeadingListEnd
+
+%-----------HONOURS \& AWARDS-----------------
+\section{Honours \& Awards}
+  \resumeSubHeadingListStart
+    \resumeSubItem{ScotlandIS Young Software Engineer of the Year}{Winner, 2023}
+    \resumeSubItem{Charles Babbage Award, University of Strathclyde}{Winner, 2023 --- best dissertation in the graduating cohort}
+  \resumeSubHeadingListEnd
+
+\vspace{2pt}
+\small{Spanish (native) $\cdot$ English C1 Advanced (Cambridge) $\cdot$ UK Settled Status $\cdot$ EU citizen (Spain)}
+
+%-------------------------------------------
+\end{document}

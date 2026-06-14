@@ -1,0 +1,49 @@
+Date,Time,Activity,Location,Cost,Priority,Latitude,Longitude
+04/02/2026,16:30,JFK to Manhattan,Subway/AirTrain,$12,MUST,40.6413,-73.7781
+04/02/2026,18:30,Check-in,Hyatt Place,-,MUST,40.7566,-73.9863
+04/02/2026,19:30,Times Sq + Radio City Hall,Midtown,Free,CLASSIC,40.758,-73.9855
+04/02/2026,20:30,Dinner: 99 Cent Fresh Pizza,Midtown,$5,CLASSIC,40.7589,-73.9896
+04/02/2026,21:30,Hell's Kitchen Bar Crawl Start,9th Ave,$40,PREFERENCE,40.7608,-73.9916
+04/02/2026,21:30,→ Rudy's Bar & Grill,9th Ave & 44th St,-,PREFERENCE,40.7609,-73.9919
+04/02/2026,22:15,→ Dutch Fred's,9th Ave & 47th St,-,PREFERENCE,40.7609,-73.9886
+04/02/2026,23:00,→ The Friki Tiki,9th Ave & 48th St,-,PREFERENCE,40.7562,-73.9941
+04/02/2026,23:45,→ Bar Centrale,46th St (8th/9th),-,PREFERENCE,40.7596,-73.9899
+04/02/2026,00:30,→ Hold Fast Kitchen & Spirits,52nd St (9th/10th),-,PREFERENCE,40.7598,-73.9907
+04/02/2026,01:15,230 Fifth Rooftop (Final Stop),5th Ave & 27th St,$25,MUST,40.7441,-73.9884
+05/02/2026,08:00,Breakfast: Russ & Daughters,Lower East Side,$15,CLASSIC,40.7223,-73.9886
+05/02/2026,09:00,Statue of Liberty (Ferry),Battery Park,FREE,CLASSIC,40.7033,-74.017
+05/02/2026,11:30,Wall St Bull + 9/11 Mem.,Financial Dist.,Free,MUST,40.7085,-74.0134
+05/02/2026,12:30,BLAZER SHOPPING,Century 21,$120,MUST,40.7107,-74.0103
+05/02/2026,14:30,Brooklyn Bridge Sunset Walk,City Hall Start,Free,MUST,40.7127,-74.0059
+05/02/2026,16:00,DUMBO + Photo Spot,Brooklyn,Free,MUST,40.7033,-73.9896
+05/02/2026,17:30,Grimaldi's Pizza,Brooklyn,$25,CLASSIC,40.7027,-73.9934
+05/02/2026,19:00,Chinatown + Little Italy,Canal St,$25,CLASSIC,40.717,-73.9973
+05/02/2026,21:00,Lower East Side Party,LES,$60,PREFERENCE,40.7188,-73.987
+06/02/2026,10:00,MoMA Museum,53rd St,$30,MUST,40.7614,-73.9776
+06/02/2026,12:30,High Line Walk,Hudson Yards,Free,MUST,40.7479,-74.0049
+06/02/2026,14:00,The Edge + Peak Bar,Hudson Yards,$30,PREFERENCE,40.7539,-74.0018
+06/02/2026,15:30,Chelsea Market + Tacos No1,9th Ave,$20,MUST,40.7424,-74.006
+06/02/2026,17:00,Pier 57 + Little Island,Hudson River,Free,MUST,40.7424,-74.0095
+06/02/2026,18:30,West Village + Friends Apt,West Village,Free,CLASSIC,40.732,-74.0046
+06/02/2026,20:00,Spider-Man Pizza: Joe's,7 Carmine St,$10,CLASSIC,40.7306,-74.0027
+06/02/2026,21:30,Washington Sq Park,Village,Free,CLASSIC,40.7308,-73.9973
+06/02/2026,22:30,Jazz: Blue Note / Village V.,West Village,$40,MUST,40.73,-74.0002
+07/02/2026,09:00,Central Park (Strawberry F),Upper West,Free,CLASSIC,40.7756,-73.9747
+07/02/2026,10:30,MET Museum Steps,82nd St,Free,CLASSIC,40.7794,-73.9632
+07/02/2026,11:30,Solomon R. Guggenheim Museum,5th Ave & 89th St,$30,PREFERENCE,40.783,-73.959
+07/02/2026,13:00,5th Ave + St. Patrick's,Midtown,Free,MUST,40.7585,-73.975
+07/02/2026,14:30,Grand Central Terminal,42nd St,$25,MUST,40.7527,-73.9772
+07/02/2026,15:30,Chrysler Building,42nd St,Free,CLASSIC,40.7516,-73.9755
+07/02/2026,16:00,Roosevelt Island Tram,59th St,$6,PREFERENCE,40.761,-73.9654
+07/02/2026,17:00,Bryant Park + Library,42nd St,Free,CLASSIC,40.7536,-73.9832
+07/02/2026,18:00,Flatiron + Madison Sq Park,23rd St,Free,CLASSIC,40.7411,-73.9897
+07/02/2026,19:00,McGee's Pub (Pres/Dinner),55th St,$50,MUST,40.7645,-73.9847
+07/02/2026,20:30,Empire State Building,34th St,$44,CLASSIC,40.7484,-73.9857
+07/02/2026,22:00,Top of the Rock (Night View),Rockefeller Center,$40,MUST,40.7593,-73.9795
+07/02/2026,23:30,Night Out: Nebula / Marquee,Midtown/Chelsea,$60,MUST,40.7554,-73.987
+08/02/2026,09:30,Luigi's Pizza,Midtown/Various,$10,PREFERENCE,40.7549,-73.984
+08/02/2026,11:00,Bryant Park (Coffee),42nd St,Free,CLASSIC,40.7536,-73.9832
+08/02/2026,12:30,Lunch: Hooters,33rd St (MSG),$20,CLASSIC,40.7505,-73.9934
+08/02/2026,14:00,Madison Square Garden,33rd St,Free,MUST,40.7505,-73.9934
+08/02/2026,15:00,Last Deli/Bagel Stop,Midtown,$15,CLASSIC,40.7549,-73.984
+08/02/2026,15:30,Final Trip to JFK,JFK,$40,MUST,40.6413,-73.7781
