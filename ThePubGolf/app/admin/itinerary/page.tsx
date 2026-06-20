@@ -12,7 +12,7 @@ export default async function AdminItineraryPage() {
 
   return (
     <div>
-      <h1 style={{ fontWeight: 700, fontSize: '1.3rem', marginBottom: '1rem', color: '#CEDC00' }}>
+      <h1 style={{ fontWeight: 700, fontSize: '1.3rem', marginBottom: '1rem', color: '#F4C430' }}>
         📍 Itinerary
       </h1>
       <ItineraryClient stops={stops ?? []} />

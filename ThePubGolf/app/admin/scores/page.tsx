@@ -13,7 +13,7 @@ export default async function ScoresPage() {
 
   return (
     <div>
-      <h1 style={{ fontWeight: 700, fontSize: '1.3rem', marginBottom: '1rem', color: '#CEDC00' }}>
+      <h1 style={{ fontWeight: 700, fontSize: '1.3rem', marginBottom: '1rem', color: '#F4C430' }}>
         ⛳ Score Entry
       </h1>
       <ScoresClient teams={teams ?? []} stops={stops ?? []} scores={scores ?? []} />

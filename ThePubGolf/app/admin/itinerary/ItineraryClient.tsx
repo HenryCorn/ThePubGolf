@@ -73,12 +73,12 @@ export default function ItineraryClient({ stops: initialStops }: Props) {
 
   const input: React.CSSProperties = {
     width: '100%', padding: '7px 10px', borderRadius: 8,
-    background: '#1e2523', border: '1px solid #2a3533',
-    color: '#e8f0ee', fontSize: '0.88rem', marginBottom: '0.4rem',
+    background: '#132040', border: '1px solid #1A3055',
+    color: '#D6ECFF', fontSize: '0.88rem', marginBottom: '0.4rem',
   }
-  const btn = (bg = '#00594F'): React.CSSProperties => ({
+  const btn = (bg = '#1666C4'): React.CSSProperties => ({
     padding: '6px 12px', borderRadius: 8, border: 'none',
-    background: bg, color: bg === '#c0392b' ? '#fff' : '#e8f0ee',
+    background: bg, color: bg === '#c0392b' ? '#fff' : '#D6ECFF',
     fontSize: '0.82rem', fontWeight: 600, cursor: 'pointer',
   })
 
@@ -94,13 +94,13 @@ export default function ItineraryClient({ stops: initialStops }: Props) {
         <input required placeholder="Location / address" value={values.location} onChange={(e) => onChange({ location: e.target.value })} style={input} />
         <input required placeholder="Drink" value={values.drink} onChange={(e) => onChange({ drink: e.target.value })} style={input} />
         <input required placeholder="Mini-game description" value={values.mini_game} onChange={(e) => onChange({ mini_game: e.target.value })} style={input} />
-        <label style={{ fontSize: '0.82rem', color: '#7a9390', display: 'flex', alignItems: 'center', gap: 6, marginBottom: '0.5rem' }}>
+        <label style={{ fontSize: '0.82rem', color: '#5879A0', display: 'flex', alignItems: 'center', gap: 6, marginBottom: '0.5rem' }}>
           <input type="checkbox" checked={values.is_web_game} onChange={(e) => onChange({ is_web_game: e.target.checked })} />
           Web reaction game ⚡
         </label>
         <div style={{ display: 'flex', gap: '0.5rem' }}>
           <button type="submit" disabled={isPending} style={btn()}>{label}</button>
-          <button type="button" onClick={() => { setShowAdd(false); setEditingId(null) }} style={btn('#2a3533')}>Cancel</button>
+          <button type="button" onClick={() => { setShowAdd(false); setEditingId(null) }} style={btn('#1A3055')}>Cancel</button>
         </div>
       </form>
     )
@@ -117,7 +117,7 @@ export default function ItineraryClient({ stops: initialStops }: Props) {
       )}
 
       {showAdd && (
-        <div style={{ background: '#151a19', borderRadius: 14, padding: '1rem', border: '1px solid #CEDC00', marginBottom: '1rem' }}>
+        <div style={{ background: '#0C1728', borderRadius: 14, padding: '1rem', border: '1px solid #F4C430', marginBottom: '1rem' }}>
           <h3 style={{ fontWeight: 700, marginBottom: '0.75rem' }}>New Stop</h3>
           <StopForm values={form} onChange={patchForm} onSubmit={handleAdd} label="Add stop" />
         </div>
@@ -125,8 +125,8 @@ export default function ItineraryClient({ stops: initialStops }: Props) {
 
       {initialStops.map((stop, idx) => (
         <div key={stop.id} style={{
-          background: '#151a19', borderRadius: 14, padding: '1rem',
-          border: `1px solid ${editingId === stop.id ? '#CEDC00' : '#2a3533'}`,
+          background: '#0C1728', borderRadius: 14, padding: '1rem',
+          border: `1px solid ${editingId === stop.id ? '#F4C430' : '#1A3055'}`,
           marginBottom: '0.75rem',
         }}>
           {editingId === stop.id ? (
@@ -142,19 +142,19 @@ export default function ItineraryClient({ stops: initialStops }: Props) {
           ) : (
             <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                <button disabled={idx === 0 || isPending} onClick={() => handleReorder(stop.id, 'up')} style={{ ...btn('#1e2523'), padding: '4px 8px', fontSize: '0.9rem' }}>▲</button>
-                <button disabled={idx === initialStops.length - 1 || isPending} onClick={() => handleReorder(stop.id, 'down')} style={{ ...btn('#1e2523'), padding: '4px 8px', fontSize: '0.9rem' }}>▼</button>
+                <button disabled={idx === 0 || isPending} onClick={() => handleReorder(stop.id, 'up')} style={{ ...btn('#132040'), padding: '4px 8px', fontSize: '0.9rem' }}>▲</button>
+                <button disabled={idx === initialStops.length - 1 || isPending} onClick={() => handleReorder(stop.id, 'down')} style={{ ...btn('#132040'), padding: '4px 8px', fontSize: '0.9rem' }}>▼</button>
               </div>
               <div style={{ flex: 1 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
                   <span style={{ fontWeight: 700 }}>{stop.position}. {stop.pub_name}</span>
-                  {stop.is_web_game && <span style={{ background: '#CEDC00', color: '#0B0F0E', fontSize: '0.65rem', fontWeight: 700, padding: '1px 5px', borderRadius: 99 }}>GAME</span>}
+                  {stop.is_web_game && <span style={{ background: '#F4C430', color: '#070F1B', fontSize: '0.65rem', fontWeight: 700, padding: '1px 5px', borderRadius: 99 }}>GAME</span>}
                 </div>
-                <p style={{ fontSize: '0.8rem', color: '#7a9390' }}>📍 {stop.location}</p>
-                <p style={{ fontSize: '0.8rem', color: '#7a9390' }}>🍺 {stop.drink} · 🎯 {stop.mini_game}</p>
+                <p style={{ fontSize: '0.8rem', color: '#5879A0' }}>📍 {stop.location}</p>
+                <p style={{ fontSize: '0.8rem', color: '#5879A0' }}>🍺 {stop.drink} · 🎯 {stop.mini_game}</p>
               </div>
               <div style={{ display: 'flex', gap: '0.4rem', flexShrink: 0 }}>
-                <button onClick={() => { setEditingId(stop.id); setEditForm({ pub_name: stop.pub_name, location: stop.location, drink: stop.drink, mini_game: stop.mini_game, is_web_game: stop.is_web_game }) }} style={btn('#1e2523')}>✏️</button>
+                <button onClick={() => { setEditingId(stop.id); setEditForm({ pub_name: stop.pub_name, location: stop.location, drink: stop.drink, mini_game: stop.mini_game, is_web_game: stop.is_web_game }) }} style={btn('#132040')}>✏️</button>
                 <button onClick={() => handleDelete(stop.id, stop.pub_name)} style={btn('#c0392b')}>🗑️</button>
               </div>
             </div>

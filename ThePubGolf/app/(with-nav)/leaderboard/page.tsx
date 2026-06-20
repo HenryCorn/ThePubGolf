@@ -25,7 +25,7 @@ export default async function LeaderboardPage() {
 
   return (
     <div className="px-4 py-6 max-w-lg mx-auto">
-      <h1 style={{ fontWeight: 700, fontSize: '1.4rem', marginBottom: '1rem', color: '#CEDC00' }}>
+      <h1 style={{ fontWeight: 700, fontSize: '1.4rem', marginBottom: '1rem', color: '#F4C430' }}>
         🏆 Leaderboard
       </h1>
       <LiveLeaderboard initialEntries={entries} stops={stops ?? []} reactionAvgs={reactionAvgs} />

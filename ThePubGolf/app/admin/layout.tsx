@@ -9,15 +9,15 @@ const navLinks = [
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ minHeight: '100dvh', background: '#0B0F0E' }}>
+    <div style={{ minHeight: '100dvh', background: '#070F1B' }}>
       <header style={{
-        background: '#151a19', borderBottom: '1px solid #2a3533',
+        background: '#0C1728', borderBottom: '1px solid #1A3055',
         padding: '0.75rem 1rem',
         display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap',
       }}>
-        <span style={{ fontWeight: 700, color: '#CEDC00', marginRight: '0.5rem' }}>⛳ Admin</span>
+        <span style={{ fontWeight: 700, color: '#F4C430', marginRight: '0.5rem' }}>⛳ Admin</span>
         {navLinks.map((l) => (
-          <Link key={l.href} href={l.href} style={{ color: '#7a9390', fontSize: '0.85rem', textDecoration: 'none' }}>
+          <Link key={l.href} href={l.href} style={{ color: '#5879A0', fontSize: '0.85rem', textDecoration: 'none' }}>
             {l.label}
           </Link>
         ))}

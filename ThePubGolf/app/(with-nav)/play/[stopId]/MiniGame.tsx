@@ -119,18 +119,18 @@ export default function MiniGame({ stopId, previousResult }: Props) {
     return (
       <div className="flex flex-col items-center justify-center flex-1 px-6 text-center gap-4">
         <div style={{ fontSize: '4rem' }}>✅</div>
-        <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#CEDC00' }}>Already played!</h2>
-        <p style={{ color: '#7a9390' }}>
-          Your best average was <strong style={{ color: '#e8f0ee' }}>{previousResult.avg_ms}ms</strong>
+        <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#F4C430' }}>Already played!</h2>
+        <p style={{ color: '#5879A0' }}>
+          Your best average was <strong style={{ color: '#D6ECFF' }}>{previousResult.avg_ms}ms</strong>
         </p>
-        <p style={{ color: '#7a9390', fontSize: '0.85rem' }}>
+        <p style={{ color: '#5879A0', fontSize: '0.85rem' }}>
           Rounds: {previousResult.round_times_ms.map((t) => `${t}ms`).join(' · ')}
         </p>
         <button
           onClick={() => router.push('/leaderboard')}
           style={{
             marginTop: '1rem', padding: '12px 28px', borderRadius: 12, border: 'none',
-            background: '#00594F', color: '#e8f0ee', fontSize: '1rem', fontWeight: 600,
+            background: '#1666C4', color: '#D6ECFF', fontSize: '1rem', fontWeight: 600,
           }}
         >
           See leaderboard
@@ -145,11 +145,11 @@ export default function MiniGame({ stopId, previousResult }: Props) {
         {toast && <Toast {...toast} onDismiss={dismiss} />}
         <div style={{ fontSize: '5rem' }}>{TARGET_FACE}</div>
         <div>
-          <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#CEDC00', marginBottom: 8 }}>
+          <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#F4C430', marginBottom: 8 }}>
             Tap this face!
           </h2>
-          <p style={{ color: '#7a9390', lineHeight: 1.5 }}>
-            {NUM_FACES} faces will appear. Tap <strong style={{ color: '#e8f0ee' }}>{TARGET_FACE}</strong> as fast as you can.
+          <p style={{ color: '#5879A0', lineHeight: 1.5 }}>
+            {NUM_FACES} faces will appear. Tap <strong style={{ color: '#D6ECFF' }}>{TARGET_FACE}</strong> as fast as you can.
             {NUM_ROUNDS} rounds. The melting face is the one.
           </p>
         </div>
@@ -157,7 +157,7 @@ export default function MiniGame({ stopId, previousResult }: Props) {
           onClick={startCountdown}
           style={{
             padding: '14px 36px', borderRadius: 14, border: 'none',
-            background: '#CEDC00', color: '#0B0F0E', fontSize: '1.1rem', fontWeight: 700,
+            background: '#F4C430', color: '#070F1B', fontSize: '1.1rem', fontWeight: 700,
           }}
         >
           Start
@@ -170,12 +170,12 @@ export default function MiniGame({ stopId, previousResult }: Props) {
     return (
       <div className="flex flex-col items-center justify-center flex-1">
         <div style={{
-          fontSize: '8rem', fontWeight: 900, color: '#CEDC00',
+          fontSize: '8rem', fontWeight: 900, color: '#F4C430',
           animation: 'pulse 0.9s ease-in-out',
         }}>
           {countdown > 0 ? countdown : '…'}
         </div>
-        <p style={{ color: '#7a9390', marginTop: 8 }}>Round {round + 1} of {NUM_ROUNDS}</p>
+        <p style={{ color: '#5879A0', marginTop: 8 }}>Round {round + 1} of {NUM_ROUNDS}</p>
       </div>
     )
   }
@@ -234,17 +234,17 @@ export default function MiniGame({ stopId, previousResult }: Props) {
     return (
       <div className="flex flex-col items-center justify-center flex-1 px-6 text-center gap-4">
         <div style={{ fontSize: '3rem' }}>⚡</div>
-        <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#CEDC00' }}>
+        <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#F4C430' }}>
           Round {round + 1} done!
         </h2>
-        <p style={{ color: '#e8f0ee', fontSize: '1.1rem' }}>
+        <p style={{ color: '#D6ECFF', fontSize: '1.1rem' }}>
           {lastTime}ms
         </p>
         <button
           onClick={nextRound}
           style={{
             padding: '12px 32px', borderRadius: 12, border: 'none',
-            background: '#00594F', color: '#e8f0ee', fontSize: '1rem', fontWeight: 600,
+            background: '#1666C4', color: '#D6ECFF', fontSize: '1rem', fontWeight: 600,
           }}
         >
           Next round →
@@ -259,13 +259,13 @@ export default function MiniGame({ stopId, previousResult }: Props) {
       <div className="flex flex-col items-center justify-center flex-1 px-6 text-center gap-4">
         {toast && <Toast {...toast} onDismiss={dismiss} />}
         <div style={{ fontSize: '4rem' }}>🏁</div>
-        <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#CEDC00' }}>Done!</h2>
-        <div style={{ background: '#151a19', borderRadius: 14, padding: '1rem 1.5rem', border: '1px solid #2a3533' }}>
-          <p style={{ color: '#7a9390', marginBottom: 6, fontSize: '0.85rem' }}>Your rounds</p>
+        <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#F4C430' }}>Done!</h2>
+        <div style={{ background: '#0C1728', borderRadius: 14, padding: '1rem 1.5rem', border: '1px solid #1A3055' }}>
+          <p style={{ color: '#5879A0', marginBottom: 6, fontSize: '0.85rem' }}>Your rounds</p>
           {times.map((t, i) => (
             <p key={i} style={{ fontSize: '1rem', fontWeight: 600 }}>Round {i + 1}: {t}ms</p>
           ))}
-          <p style={{ fontSize: '1.3rem', fontWeight: 800, color: '#CEDC00', marginTop: 8 }}>
+          <p style={{ fontSize: '1.3rem', fontWeight: 800, color: '#F4C430', marginTop: 8 }}>
             Avg: {avg}ms
           </p>
         </div>
@@ -273,7 +273,7 @@ export default function MiniGame({ stopId, previousResult }: Props) {
           onClick={() => router.push('/leaderboard')}
           style={{
             padding: '12px 28px', borderRadius: 12, border: 'none',
-            background: '#00594F', color: '#e8f0ee', fontSize: '1rem', fontWeight: 600,
+            background: '#1666C4', color: '#D6ECFF', fontSize: '1rem', fontWeight: 600,
           }}
         >
           See leaderboard

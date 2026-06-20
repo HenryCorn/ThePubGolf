@@ -15,7 +15,7 @@ export function Toast({ message, type = 'info', onDismiss }: ToastProps) {
   }, [onDismiss])
 
   const bg =
-    type === 'success' ? '#00594F' : type === 'error' ? '#c0392b' : '#1e2523'
+    type === 'success' ? '#1666C4' : type === 'error' ? '#c0392b' : '#132040'
 
   return (
     <div

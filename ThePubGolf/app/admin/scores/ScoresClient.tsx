@@ -41,8 +41,8 @@ export default function ScoresClient({ teams, stops, scores }: Props) {
   }
 
   const input: React.CSSProperties = {
-    padding: '6px 10px', borderRadius: 8, background: '#1e2523',
-    border: '1px solid #2a3533', color: '#e8f0ee', fontSize: '0.9rem', width: '100%',
+    padding: '6px 10px', borderRadius: 8, background: '#132040',
+    border: '1px solid #1A3055', color: '#D6ECFF', fontSize: '0.9rem', width: '100%',
   }
 
   return (
@@ -50,7 +50,7 @@ export default function ScoresClient({ teams, stops, scores }: Props) {
       {toast && <Toast {...toast} onDismiss={dismiss} />}
 
       <div style={{ marginBottom: '1rem' }}>
-        <label style={{ fontSize: '0.8rem', color: '#7a9390', display: 'block', marginBottom: 4 }}>Stop</label>
+        <label style={{ fontSize: '0.8rem', color: '#5879A0', display: 'block', marginBottom: 4 }}>Stop</label>
         <select
           value={selectedStop}
           onChange={(e) => setSelectedStop(e.target.value)}
@@ -63,7 +63,7 @@ export default function ScoresClient({ teams, stops, scores }: Props) {
       </div>
 
       {teams.length === 0 && (
-        <p style={{ color: '#7a9390' }}>No teams yet — generate teams first.</p>
+        <p style={{ color: '#5879A0' }}>No teams yet — generate teams first.</p>
       )}
 
       {teams.map((team) => {
@@ -73,14 +73,14 @@ export default function ScoresClient({ teams, stops, scores }: Props) {
             key={team.id}
             onSubmit={(e) => handleSubmit(team.id, e)}
             style={{
-              background: '#151a19', borderRadius: 14, padding: '1rem',
-              border: '1px solid #2a3533', marginBottom: '0.75rem',
+              background: '#0C1728', borderRadius: 14, padding: '1rem',
+              border: '1px solid #1A3055', marginBottom: '0.75rem',
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
               <h3 style={{ fontWeight: 700 }}>{team.name}</h3>
               {existing && (
-                <span style={{ fontSize: '0.8rem', color: '#CEDC00' }}>
+                <span style={{ fontSize: '0.8rem', color: '#F4C430' }}>
                   Saved: {existing.sips} sips{existing.penalties > 0 ? ` +${existing.penalties}⚠️` : ''}
                 </span>
               )}
@@ -88,7 +88,7 @@ export default function ScoresClient({ teams, stops, scores }: Props) {
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '0.5rem' }}>
               <div>
-                <label style={{ fontSize: '0.75rem', color: '#7a9390', display: 'block', marginBottom: 2 }}>Sips *</label>
+                <label style={{ fontSize: '0.75rem', color: '#5879A0', display: 'block', marginBottom: 2 }}>Sips *</label>
                 <input
                   name="sips" type="number" min={1} max={99}
                   defaultValue={existing?.sips ?? ''}
@@ -98,7 +98,7 @@ export default function ScoresClient({ teams, stops, scores }: Props) {
                 />
               </div>
               <div>
-                <label style={{ fontSize: '0.75rem', color: '#7a9390', display: 'block', marginBottom: 2 }}>Penalties</label>
+                <label style={{ fontSize: '0.75rem', color: '#5879A0', display: 'block', marginBottom: 2 }}>Penalties</label>
                 <input
                   name="penalties" type="number" min={0} max={99}
                   defaultValue={existing?.penalties ?? 0}
@@ -108,7 +108,7 @@ export default function ScoresClient({ teams, stops, scores }: Props) {
             </div>
 
             <div style={{ marginBottom: '0.75rem' }}>
-              <label style={{ fontSize: '0.75rem', color: '#7a9390', display: 'block', marginBottom: 2 }}>Penalty reason</label>
+              <label style={{ fontSize: '0.75rem', color: '#5879A0', display: 'block', marginBottom: 2 }}>Penalty reason</label>
               <input
                 name="penalty_reason"
                 defaultValue={existing?.penalty_reason ?? ''}
@@ -121,8 +121,8 @@ export default function ScoresClient({ teams, stops, scores }: Props) {
               type="submit" disabled={isPending}
               style={{
                 padding: '8px 18px', borderRadius: 10, border: 'none',
-                background: isPending ? '#2a3533' : '#00594F',
-                color: '#e8f0ee', fontSize: '0.9rem', fontWeight: 600,
+                background: isPending ? '#1A3055' : '#1666C4',
+                color: '#D6ECFF', fontSize: '0.9rem', fontWeight: 600,
                 cursor: isPending ? 'not-allowed' : 'pointer',
               }}
             >

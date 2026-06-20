@@ -24,10 +24,10 @@ export default async function HomePage() {
   return (
     <div className="min-h-dvh flex flex-col items-center justify-center px-4 py-8">
       <div className="w-full max-w-sm">
-        <h1 className="text-4xl font-bold text-center mb-1" style={{ color: '#CEDC00' }}>
+        <h1 className="text-4xl font-bold text-center mb-1" style={{ color: '#F4C430' }}>
           ⛳ Pub Golf
         </h1>
-        <p className="text-center mb-8" style={{ color: '#7a9390' }}>
+        <p className="text-center mb-8" style={{ color: '#5879A0' }}>
           May the best drinker win
         </p>
         <RegistrationForm existingPlayers={players ?? []} />

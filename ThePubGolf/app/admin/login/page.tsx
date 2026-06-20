@@ -30,17 +30,17 @@ export default function AdminLoginPage() {
   return (
     <div style={{
       minHeight: '100dvh', display: 'flex', alignItems: 'center', justifyContent: 'center',
-      padding: '1.5rem', background: '#0B0F0E',
+      padding: '1.5rem', background: '#070F1B',
     }}>
       <div style={{ width: '100%', maxWidth: 340 }}>
-        <h1 style={{ textAlign: 'center', fontWeight: 700, fontSize: '1.5rem', color: '#CEDC00', marginBottom: '1.5rem' }}>
+        <h1 style={{ textAlign: 'center', fontWeight: 700, fontSize: '1.5rem', color: '#F4C430', marginBottom: '1.5rem' }}>
           🔒 Admin
         </h1>
         <form onSubmit={handleSubmit} style={{
-          background: '#151a19', borderRadius: 16, padding: '1.25rem',
-          border: '1px solid #2a3533',
+          background: '#0C1728', borderRadius: 16, padding: '1.25rem',
+          border: '1px solid #1A3055',
         }}>
-          <label style={{ display: 'block', fontSize: '0.8rem', color: '#7a9390', marginBottom: 4 }}>Passcode</label>
+          <label style={{ display: 'block', fontSize: '0.8rem', color: '#5879A0', marginBottom: 4 }}>Passcode</label>
           <input
             type="password"
             value={passcode}
@@ -49,8 +49,8 @@ export default function AdminLoginPage() {
             required
             style={{
               width: '100%', padding: '10px 12px', borderRadius: 10,
-              background: '#1e2523', border: `1px solid ${error ? '#e55' : '#2a3533'}`,
-              color: '#e8f0ee', fontSize: '1rem', marginBottom: '0.75rem',
+              background: '#132040', border: `1px solid ${error ? '#e55' : '#1A3055'}`,
+              color: '#D6ECFF', fontSize: '1rem', marginBottom: '0.75rem',
             }}
           />
           {error && <p style={{ color: '#e55', fontSize: '0.82rem', marginBottom: '0.75rem' }}>{error}</p>}
@@ -58,7 +58,7 @@ export default function AdminLoginPage() {
             type="submit" disabled={isPending}
             style={{
               width: '100%', padding: '12px', borderRadius: 12, border: 'none',
-              background: isPending ? '#2a3533' : '#00594F', color: '#e8f0ee',
+              background: isPending ? '#1A3055' : '#1666C4', color: '#D6ECFF',
               fontSize: '1rem', fontWeight: 600, cursor: isPending ? 'not-allowed' : 'pointer',
             }}
           >

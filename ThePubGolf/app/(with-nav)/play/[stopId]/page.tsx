@@ -31,7 +31,7 @@ export default async function PlayPage({ params }: { params: Promise<{ stopId: s
     .single()
 
   return (
-    <div className="min-h-dvh flex flex-col" style={{ background: '#0B0F0E' }}>
+    <div className="min-h-dvh flex flex-col" style={{ background: '#070F1B' }}>
       <MiniGame
         stopId={stopId}
         previousResult={existing ?? null}

@@ -72,18 +72,18 @@ export default function TeamsClient({ teams: initialTeams, players }: Props) {
   }
 
   const card: React.CSSProperties = {
-    background: '#151a19', borderRadius: 14, padding: '1rem',
-    border: '1px solid #2a3533', marginBottom: '0.75rem',
+    background: '#0C1728', borderRadius: 14, padding: '1rem',
+    border: '1px solid #1A3055', marginBottom: '0.75rem',
   }
 
   const input: React.CSSProperties = {
-    padding: '6px 10px', borderRadius: 8, background: '#1e2523',
-    border: '1px solid #2a3533', color: '#e8f0ee', fontSize: '0.9rem',
+    padding: '6px 10px', borderRadius: 8, background: '#132040',
+    border: '1px solid #1A3055', color: '#D6ECFF', fontSize: '0.9rem',
   }
 
-  const btn = (color = '#00594F'): React.CSSProperties => ({
+  const btn = (color = '#1666C4'): React.CSSProperties => ({
     padding: '6px 14px', borderRadius: 8, border: 'none',
-    background: color, color: '#e8f0ee', fontSize: '0.85rem',
+    background: color, color: '#D6ECFF', fontSize: '0.85rem',
     fontWeight: 600, cursor: isPending ? 'not-allowed' : 'pointer',
   })
 
@@ -95,7 +95,7 @@ export default function TeamsClient({ teams: initialTeams, players }: Props) {
       <div style={card}>
         <h3 style={{ fontWeight: 600, marginBottom: '0.75rem' }}>Generate Teams</h3>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
-          <label style={{ fontSize: '0.85rem', color: '#7a9390' }}>Number of teams</label>
+          <label style={{ fontSize: '0.85rem', color: '#5879A0' }}>Number of teams</label>
           <input
             type="number" min={2} max={12} value={numTeams}
             onChange={(e) => setNumTeams(Number(e.target.value))}
@@ -105,7 +105,7 @@ export default function TeamsClient({ teams: initialTeams, players }: Props) {
             {isPending ? 'Generating…' : 'Shuffle & assign'}
           </button>
         </div>
-        <p style={{ fontSize: '0.78rem', color: '#7a9390', marginTop: '0.5rem' }}>
+        <p style={{ fontSize: '0.78rem', color: '#5879A0', marginTop: '0.5rem' }}>
           {players.length} players registered · {unassigned.length} unassigned
         </p>
       </div>
@@ -117,7 +117,7 @@ export default function TeamsClient({ teams: initialTeams, players }: Props) {
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {unassigned.map((p) => (
               <div key={p.id} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                <span style={{ background: '#1e2523', borderRadius: 8, padding: '3px 8px', fontSize: '0.85rem' }}>
+                <span style={{ background: '#132040', borderRadius: 8, padding: '3px 8px', fontSize: '0.85rem' }}>
                   {p.emoji} {p.name}
                 </span>
                 <select
@@ -142,12 +142,12 @@ export default function TeamsClient({ teams: initialTeams, players }: Props) {
               <>
                 <input value={newName} onChange={(e) => setNewName(e.target.value)} style={input} />
                 <button onClick={() => handleRename(team.id)} style={btn()}>Save</button>
-                <button onClick={() => setEditingName(null)} style={btn('#2a3533')}>Cancel</button>
+                <button onClick={() => setEditingName(null)} style={btn('#1A3055')}>Cancel</button>
               </>
             ) : (
               <>
                 <h3 style={{ fontWeight: 700, fontSize: '1rem' }}>{team.name}</h3>
-                <button onClick={() => { setEditingName(team.id); setNewName(team.name) }} style={btn('#1e2523')}>
+                <button onClick={() => { setEditingName(team.id); setNewName(team.name) }} style={btn('#132040')}>
                   ✏️ Rename
                 </button>
               </>
@@ -155,17 +155,17 @@ export default function TeamsClient({ teams: initialTeams, players }: Props) {
           </div>
 
           {team.players.length === 0 ? (
-            <p style={{ color: '#7a9390', fontSize: '0.85rem' }}>No players yet</p>
+            <p style={{ color: '#5879A0', fontSize: '0.85rem' }}>No players yet</p>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
               {team.players.map((p) => (
                 <div key={p.id} style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
                   <span style={{ fontSize: '0.9rem', flex: 1 }}>
                     {p.emoji} {p.name}
-                    {team.captain_id === p.id && <span style={{ marginLeft: 4, color: '#CEDC00' }}>★ Captain</span>}
+                    {team.captain_id === p.id && <span style={{ marginLeft: 4, color: '#F4C430' }}>★ Captain</span>}
                   </span>
                   {team.captain_id !== p.id && (
-                    <button onClick={() => handleCaptain(team.id, p.id)} style={btn('#1e2523')}>
+                    <button onClick={() => handleCaptain(team.id, p.id)} style={btn('#132040')}>
                       Make captain
                     </button>
                   )}

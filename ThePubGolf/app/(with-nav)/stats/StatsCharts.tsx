@@ -14,7 +14,7 @@ interface Props {
   minigames: any[]
 }
 
-const TEAM_COLORS = ['#CEDC00', '#00594F', '#00b8a9', '#f9a825', '#e91e63', '#9c27b0']
+const TEAM_COLORS = ['#F4C430', '#1666C4', '#38BDF8', '#f9a825', '#e91e63', '#9c27b0']
 
 export default function StatsCharts({ entries, stops, scores, minigames }: Props) {
   // Race chart data — cumulative score per stop
@@ -84,31 +84,31 @@ export default function StatsCharts({ entries, stops, scores, minigames }: Props
   const isEmpty = !entries.length || !stops.length
 
   if (isEmpty) {
-    return <p style={{ color: '#7a9390' }}>Stats will appear once teams and scores are in.</p>
+    return <p style={{ color: '#5879A0' }}>Stats will appear once teams and scores are in.</p>
   }
 
-  const tooltip = { contentStyle: { background: '#1e2523', border: '1px solid #2a3533', borderRadius: 10 } }
+  const tooltip = { contentStyle: { background: '#132040', border: '1px solid #1A3055', borderRadius: 10 } }
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
 
       {/* Race chart */}
       {raceData.length > 0 && (
-        <section style={{ background: '#151a19', borderRadius: 14, padding: '1rem', border: '1px solid #2a3533' }}>
-          <h2 style={{ fontWeight: 700, marginBottom: '0.75rem', fontSize: '0.95rem', color: '#e8f0ee' }}>
+        <section style={{ background: '#0C1728', borderRadius: 14, padding: '1rem', border: '1px solid #1A3055' }}>
+          <h2 style={{ fontWeight: 700, marginBottom: '0.75rem', fontSize: '0.95rem', color: '#D6ECFF' }}>
             Race for the Claret Mug
           </h2>
           <ResponsiveContainer width="100%" height={200}>
             <LineChart data={raceData}>
-              <CartesianGrid stroke="#2a3533" strokeDasharray="3 3" />
-              <XAxis dataKey="stop" tick={{ fill: '#7a9390', fontSize: 11 }} />
-              <YAxis tick={{ fill: '#7a9390', fontSize: 11 }} />
+              <CartesianGrid stroke="#1A3055" strokeDasharray="3 3" />
+              <XAxis dataKey="stop" tick={{ fill: '#5879A0', fontSize: 11 }} />
+              <YAxis tick={{ fill: '#5879A0', fontSize: 11 }} />
               <Tooltip {...tooltip} />
               {entries.map((e, i) => (
                 <Line key={e.team.id} type="monotone" dataKey={e.team.name}
                   stroke={TEAM_COLORS[i % TEAM_COLORS.length]} strokeWidth={2} dot={{ r: 3 }} />
               ))}
-              <Legend wrapperStyle={{ fontSize: 11, color: '#7a9390' }} />
+              <Legend wrapperStyle={{ fontSize: 11, color: '#5879A0' }} />
             </LineChart>
           </ResponsiveContainer>
         </section>
@@ -116,20 +116,20 @@ export default function StatsCharts({ entries, stops, scores, minigames }: Props
 
       {/* Per-stop bar */}
       {barData.length > 0 && (
-        <section style={{ background: '#151a19', borderRadius: 14, padding: '1rem', border: '1px solid #2a3533' }}>
-          <h2 style={{ fontWeight: 700, marginBottom: '0.75rem', fontSize: '0.95rem', color: '#e8f0ee' }}>
+        <section style={{ background: '#0C1728', borderRadius: 14, padding: '1rem', border: '1px solid #1A3055' }}>
+          <h2 style={{ fontWeight: 700, marginBottom: '0.75rem', fontSize: '0.95rem', color: '#D6ECFF' }}>
             Sips per Stop
           </h2>
           <ResponsiveContainer width="100%" height={180}>
             <BarChart data={barData}>
-              <CartesianGrid stroke="#2a3533" strokeDasharray="3 3" />
-              <XAxis dataKey="stop" tick={{ fill: '#7a9390', fontSize: 11 }} />
-              <YAxis tick={{ fill: '#7a9390', fontSize: 11 }} />
+              <CartesianGrid stroke="#1A3055" strokeDasharray="3 3" />
+              <XAxis dataKey="stop" tick={{ fill: '#5879A0', fontSize: 11 }} />
+              <YAxis tick={{ fill: '#5879A0', fontSize: 11 }} />
               <Tooltip {...tooltip} />
               {entries.map((e, i) => (
                 <Bar key={e.team.id} dataKey={e.team.name} fill={TEAM_COLORS[i % TEAM_COLORS.length]} radius={[4, 4, 0, 0]} />
               ))}
-              <Legend wrapperStyle={{ fontSize: 11, color: '#7a9390' }} />
+              <Legend wrapperStyle={{ fontSize: 11, color: '#5879A0' }} />
             </BarChart>
           </ResponsiveContainer>
         </section>
@@ -137,8 +137,8 @@ export default function StatsCharts({ entries, stops, scores, minigames }: Props
 
       {/* Penalty board */}
       {penaltyBoard.length > 0 && (
-        <section style={{ background: '#151a19', borderRadius: 14, padding: '1rem', border: '1px solid #2a3533' }}>
-          <h2 style={{ fontWeight: 700, marginBottom: '0.75rem', fontSize: '0.95rem', color: '#e8f0ee' }}>
+        <section style={{ background: '#0C1728', borderRadius: 14, padding: '1rem', border: '1px solid #1A3055' }}>
+          <h2 style={{ fontWeight: 700, marginBottom: '0.75rem', fontSize: '0.95rem', color: '#D6ECFF' }}>
             🚨 Hall of Shame
           </h2>
           {penaltyBoard.map((item) => (
@@ -148,7 +148,7 @@ export default function StatsCharts({ entries, stops, scores, minigames }: Props
                 <span style={{ color: '#e55', fontWeight: 700 }}>+{item.total}⚠️</span>
               </div>
               {item.reasons.map((r, i) => (
-                <p key={i} style={{ fontSize: '0.78rem', color: '#7a9390', marginLeft: 8 }}>
+                <p key={i} style={{ fontSize: '0.78rem', color: '#5879A0', marginLeft: 8 }}>
                   • {r}
                 </p>
               ))}
@@ -159,16 +159,16 @@ export default function StatsCharts({ entries, stops, scores, minigames }: Props
 
       {/* Reaction-time podium */}
       {reactionPodium.length > 0 && (
-        <section style={{ background: '#151a19', borderRadius: 14, padding: '1rem', border: '1px solid #2a3533' }}>
-          <h2 style={{ fontWeight: 700, marginBottom: '0.75rem', fontSize: '0.95rem', color: '#e8f0ee' }}>
+        <section style={{ background: '#0C1728', borderRadius: 14, padding: '1rem', border: '1px solid #1A3055' }}>
+          <h2 style={{ fontWeight: 700, marginBottom: '0.75rem', fontSize: '0.95rem', color: '#D6ECFF' }}>
             ⚡ Fastest Reactions
           </h2>
           {reactionPodium.map((r, i) => (
-            <div key={r.id} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.88rem', padding: '4px 0', borderTop: i > 0 ? '1px solid #2a3533' : undefined }}>
+            <div key={r.id} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.88rem', padding: '4px 0', borderTop: i > 0 ? '1px solid #1A3055' : undefined }}>
               <span>
                 {['🥇', '🥈', '🥉', '4️⃣', '5️⃣'][i]} {r.players?.emoji} {r.players?.name}
               </span>
-              <span style={{ color: '#CEDC00', fontWeight: 700 }}>{r.avg_ms}ms</span>
+              <span style={{ color: '#F4C430', fontWeight: 700 }}>{r.avg_ms}ms</span>
             </div>
           ))}
         </section>
@@ -176,8 +176,8 @@ export default function StatsCharts({ entries, stops, scores, minigames }: Props
 
       {/* Fun stat */}
       {bestStop && (
-        <section style={{ background: '#151a19', borderRadius: 14, padding: '1rem', border: '1px solid #2a3533' }}>
-          <h2 style={{ fontWeight: 700, marginBottom: '0.5rem', fontSize: '0.95rem', color: '#e8f0ee' }}>
+        <section style={{ background: '#0C1728', borderRadius: 14, padding: '1rem', border: '1px solid #1A3055' }}>
+          <h2 style={{ fontWeight: 700, marginBottom: '0.5rem', fontSize: '0.95rem', color: '#D6ECFF' }}>
             ⭐ Best Stop
           </h2>
           <p style={{ fontSize: '0.9rem' }}>

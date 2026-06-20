@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation'
 const tabs = [
   { href: '/itinerary', label: 'Itinerary', icon: '🗺️' },
   { href: '/leaderboard', label: 'Board', icon: '🏆' },
-  { href: '/play', label: 'Play', icon: '⚡' },
   { href: '/stats', label: 'Stats', icon: '📊' },
   { href: '/team', label: 'Team', icon: '👥' },
 ]
@@ -18,8 +17,8 @@ export default function BottomNav() {
     <nav
       className="fixed bottom-0 left-0 right-0 border-t flex"
       style={{
-        background: '#151a19',
-        borderColor: '#2a3533',
+        background: '#0C1728',
+        borderColor: '#1A3055',
         paddingBottom: 'env(safe-area-inset-bottom)',
         zIndex: 50,
       }}
@@ -32,7 +31,7 @@ export default function BottomNav() {
             href={tab.href}
             className="flex flex-col items-center justify-center flex-1 py-2 gap-0.5 text-xs transition-colors"
             style={{
-              color: active ? '#CEDC00' : '#7a9390',
+              color: active ? '#F4C430' : '#5879A0',
               fontWeight: active ? 600 : 400,
             }}
           >

@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainlineLibraryWebApi", "TrainlineLibraryWebApi\TrainlineLibraryWebApi.csproj", "{E3D47138-56B9-49E8-8CED-543ACEA9B218}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E3D47138-56B9-49E8-8CED-543ACEA9B218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3D47138-56B9-49E8-8CED-543ACEA9B218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3D47138-56B9-49E8-8CED-543ACEA9B218}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3D47138-56B9-49E8-8CED-543ACEA9B218}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

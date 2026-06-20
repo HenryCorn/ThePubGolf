@@ -62,10 +62,10 @@ export default function RegistrationForm({ existingPlayers }: Props) {
     padding: '10px 0',
     fontSize: '0.9rem',
     fontWeight: active ? 600 : 400,
-    color: active ? '#CEDC00' : '#7a9390',
+    color: active ? '#F4C430' : '#5879A0',
     background: 'none',
     border: 'none',
-    borderBottom: active ? '2px solid #CEDC00' : '2px solid transparent',
+    borderBottom: active ? '2px solid #F4C430' : '2px solid transparent',
     cursor: 'pointer',
     transition: 'color 0.15s',
   } as React.CSSProperties)
@@ -74,15 +74,15 @@ export default function RegistrationForm({ existingPlayers }: Props) {
     <>
       {toast && <Toast {...toast} onDismiss={dismiss} />}
 
-      <div style={{ background: '#151a19', borderRadius: 16, overflow: 'hidden', border: '1px solid #2a3533' }}>
-        <div style={{ display: 'flex', borderBottom: '1px solid #2a3533' }}>
+      <div style={{ background: '#0C1728', borderRadius: 16, overflow: 'hidden', border: '1px solid #1A3055' }}>
+        <div style={{ display: 'flex', borderBottom: '1px solid #1A3055' }}>
           <button style={tabStyle(tab === 'new')} onClick={() => setTab('new')}>New Player</button>
           <button style={tabStyle(tab === 'returning')} onClick={() => setTab('returning')}>Returning</button>
         </div>
 
         {tab === 'new' ? (
           <form onSubmit={handleRegister} style={{ padding: '1.25rem' }}>
-            <label style={{ display: 'block', fontSize: '0.8rem', color: '#7a9390', marginBottom: 4 }}>Your name</label>
+            <label style={{ display: 'block', fontSize: '0.8rem', color: '#5879A0', marginBottom: 4 }}>Your name</label>
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -91,12 +91,12 @@ export default function RegistrationForm({ existingPlayers }: Props) {
               required
               style={{
                 width: '100%', padding: '10px 12px', borderRadius: 10,
-                background: '#1e2523', border: '1px solid #2a3533', color: '#e8f0ee',
+                background: '#132040', border: '1px solid #1A3055', color: '#D6ECFF',
                 fontSize: '1rem', marginBottom: '1rem',
               }}
             />
 
-            <label style={{ display: 'block', fontSize: '0.8rem', color: '#7a9390', marginBottom: 6 }}>Pick your emoji</label>
+            <label style={{ display: 'block', fontSize: '0.8rem', color: '#5879A0', marginBottom: 6 }}>Pick your emoji</label>
             <div style={{
               display: 'grid', gridTemplateColumns: 'repeat(10, 1fr)',
               gap: 4, marginBottom: '1.25rem', maxHeight: 180, overflowY: 'auto',
@@ -107,8 +107,8 @@ export default function RegistrationForm({ existingPlayers }: Props) {
                   onClick={() => setEmoji(e)}
                   style={{
                     fontSize: '1.4rem', padding: '4px 0', borderRadius: 8, border: 'none',
-                    background: emoji === e ? '#00594F' : 'transparent',
-                    outline: emoji === e ? '2px solid #CEDC00' : 'none',
+                    background: emoji === e ? '#1666C4' : 'transparent',
+                    outline: emoji === e ? '2px solid #F4C430' : 'none',
                     cursor: 'pointer', lineHeight: 1.4,
                   }}
                 >
@@ -118,7 +118,7 @@ export default function RegistrationForm({ existingPlayers }: Props) {
             </div>
 
             {emoji && (
-              <p style={{ fontSize: '0.85rem', color: '#7a9390', marginBottom: '0.75rem', textAlign: 'center' }}>
+              <p style={{ fontSize: '0.85rem', color: '#5879A0', marginBottom: '0.75rem', textAlign: 'center' }}>
                 Playing as {emoji} {name || '…'}
               </p>
             )}
@@ -127,7 +127,7 @@ export default function RegistrationForm({ existingPlayers }: Props) {
               type="submit" disabled={isPending}
               style={{
                 width: '100%', padding: '12px', borderRadius: 12, border: 'none',
-                background: isPending ? '#2a3533' : '#00594F', color: '#e8f0ee',
+                background: isPending ? '#1A3055' : '#1666C4', color: '#D6ECFF',
                 fontSize: '1rem', fontWeight: 600, cursor: isPending ? 'not-allowed' : 'pointer',
               }}
             >
@@ -136,9 +136,9 @@ export default function RegistrationForm({ existingPlayers }: Props) {
           </form>
         ) : (
           <form onSubmit={handleReturning} style={{ padding: '1.25rem' }}>
-            <label style={{ display: 'block', fontSize: '0.8rem', color: '#7a9390', marginBottom: 4 }}>Who are you?</label>
+            <label style={{ display: 'block', fontSize: '0.8rem', color: '#5879A0', marginBottom: 4 }}>Who are you?</label>
             {existingPlayers.length === 0 ? (
-              <p style={{ color: '#7a9390', marginBottom: '1rem', fontSize: '0.9rem' }}>
+              <p style={{ color: '#5879A0', marginBottom: '1rem', fontSize: '0.9rem' }}>
                 No players registered yet — be the first!
               </p>
             ) : (
@@ -147,7 +147,7 @@ export default function RegistrationForm({ existingPlayers }: Props) {
                 onChange={(e) => setSelectedId(e.target.value)}
                 style={{
                   width: '100%', padding: '10px 12px', borderRadius: 10,
-                  background: '#1e2523', border: '1px solid #2a3533', color: '#e8f0ee',
+                  background: '#132040', border: '1px solid #1A3055', color: '#D6ECFF',
                   fontSize: '1rem', marginBottom: '1rem',
                 }}
               >
@@ -161,7 +161,7 @@ export default function RegistrationForm({ existingPlayers }: Props) {
               type="submit" disabled={isPending || !selectedId}
               style={{
                 width: '100%', padding: '12px', borderRadius: 12, border: 'none',
-                background: !selectedId || isPending ? '#2a3533' : '#00594F', color: '#e8f0ee',
+                background: !selectedId || isPending ? '#1A3055' : '#1666C4', color: '#D6ECFF',
                 fontSize: '1rem', fontWeight: 600, cursor: !selectedId || isPending ? 'not-allowed' : 'pointer',
               }}
             >

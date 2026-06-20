@@ -33,7 +33,13 @@ async function verifySignedCookie<T>(value: string): Promise<T | null> {
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  if (pathname.startsWith('/admin') && pathname !== '/admin/login') {
+  // Public routes — no auth required
+  if (pathname === '/' || pathname === '/admin/login') {
+    return NextResponse.next()
+  }
+
+  // Admin routes require admin cookie
+  if (pathname.startsWith('/admin')) {
     const adminCookie = request.cookies.get('admin')?.value
     if (!adminCookie) {
       return NextResponse.redirect(new URL('/admin/login', request.url))
@@ -42,11 +48,23 @@ export async function middleware(request: NextRequest) {
     if (!payload?.admin) {
       return NextResponse.redirect(new URL('/admin/login', request.url))
     }
+    return NextResponse.next()
+  }
+
+  // All other routes require a valid player session
+  const playerCookie = request.cookies.get('player_id')?.value
+  if (!playerCookie) {
+    return NextResponse.redirect(new URL('/', request.url))
+  }
+  const payload = await verifySignedCookie<{ player_id: string }>(playerCookie)
+  if (!payload?.player_id) {
+    return NextResponse.redirect(new URL('/', request.url))
   }
 
   return NextResponse.next()
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  // Match all routes except Next.js internals and API routes
+  matcher: ['/((?!_next/static|_next/image|favicon\\.ico|api/).*)'],
 }

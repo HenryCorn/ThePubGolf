@@ -56,7 +56,7 @@ Enable Realtime on `scores` and `minigame_results` tables in Supabase. Leaderboa
 ## Design
 
 - **Mobile-first at 375px base.** Bottom tab nav on mobile (Itinerary / Leaderboard / Play / Stats / Team).
-- **Palette:** primary `#00594F` (Aston Martin green), dark shade `#00352F`, accent `#CEDC00` (lime), background near-black `#0B0F0E`. No F1 branding, logos, liveries, or motorsport references.
+- **Palette:** primary `#1666C4` (sky blue), dark shade `#0A4099`, accent `#F4C430` (golden yellow), background midnight navy `#070F1B`.
 - Big emojis, rounded cards, large touch targets, dark-mode-friendly default, tasteful motion.
 - Use the `/frontend-design` skill when building UI components.
 
