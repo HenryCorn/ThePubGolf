@@ -1,13 +1,11 @@
 'use client'
 
 import { useState, useTransition } from 'react'
-import { useRouter } from 'next/navigation'
 
 export default function AdminLoginPage() {
   const [passcode, setPasscode] = useState('')
   const [error, setError] = useState('')
   const [isPending, startTransition] = useTransition()
-  const router = useRouter()
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -18,8 +16,7 @@ export default function AdminLoginPage() {
         body: JSON.stringify({ passcode }),
       })
       if (res.ok) {
-        router.push('/admin')
-        router.refresh()
+        window.location.href = '/admin'
       } else {
         setError('Wrong passcode')
         setPasscode('')

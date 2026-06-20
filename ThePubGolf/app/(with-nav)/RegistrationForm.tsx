@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useTransition } from 'react'
-import { useRouter } from 'next/navigation'
 import { PLAYER_EMOJIS } from '@/lib/emojis'
 import { Toast, useToast } from '@/components/Toast'
 
@@ -10,7 +9,6 @@ interface Props {
 }
 
 export default function RegistrationForm({ existingPlayers }: Props) {
-  const router = useRouter()
   const [tab, setTab] = useState<'new' | 'returning'>('new')
   const [name, setName] = useState('')
   const [emoji, setEmoji] = useState('')
@@ -34,7 +32,7 @@ export default function RegistrationForm({ existingPlayers }: Props) {
         show(data.error ?? 'Something went wrong', 'error')
       } else {
         show(`Welcome, ${emoji} ${data.name}! 🎉`, 'success')
-        setTimeout(() => router.push('/itinerary'), 800)
+        setTimeout(() => { window.location.href = '/itinerary' }, 800)
       }
     })
   }
@@ -52,7 +50,7 @@ export default function RegistrationForm({ existingPlayers }: Props) {
       if (!res.ok) {
         show('Could not log in', 'error')
       } else {
-        router.push('/itinerary')
+        window.location.href = '/itinerary'
       }
     })
   }

@@ -22,14 +22,14 @@
 }
 
 html {
-  background: #070F1B;
+  background: #040912; /* darkest fallback for overscroll */
   color: #e8f0ee;
   font-family: system-ui, -apple-system, sans-serif;
   -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  background: var(--color-bg);
+  background: transparent; /* SceneBG renders the actual background */
   color: var(--color-text);
   min-height: 100dvh;
 }
