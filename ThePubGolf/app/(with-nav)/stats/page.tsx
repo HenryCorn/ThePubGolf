@@ -1,6 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { buildLeaderboard } from '@/lib/utils/teams'
-import StatsCharts from './StatsCharts'
+import LiveStats from './LiveStats'
 
 export const revalidate = 0
 
@@ -37,11 +37,11 @@ export default async function StatsPage() {
         <div style={{ width: 48, height: 2, background: '#C9A84C', margin: '0.65rem auto 0' }} />
       </header>
 
-      <StatsCharts
-        entries={entries}
-        stops={stops ?? []}
-        scores={scores ?? []}
-        minigames={(minigames as any) ?? []}
+      <LiveStats
+        initialEntries={entries}
+        initialStops={stops ?? []}
+        initialScores={scores ?? []}
+        initialMinigames={(minigames as any) ?? []}
       />
     </div>
   )

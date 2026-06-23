@@ -3,7 +3,7 @@ import { createClient } from '@/lib/supabase/server'
 
 export async function POST(req: NextRequest) {
   const body = await req.json()
-  const { pub_name, location, drink, mini_game, is_web_game = false } = body
+  const { pub_name, location, drink, mini_game, is_web_game = false, game_enabled = false } = body
 
   if (!pub_name || !location || !drink || !mini_game) {
     return NextResponse.json({ error: 'All fields required' }, { status: 400 })
@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
 
   const { data, error } = await supabase
     .from('stops')
-    .insert({ pub_name, location, drink, mini_game, is_web_game, position })
+    .insert({ pub_name, location, drink, mini_game, is_web_game, game_enabled, position })
     .select()
     .single()
 

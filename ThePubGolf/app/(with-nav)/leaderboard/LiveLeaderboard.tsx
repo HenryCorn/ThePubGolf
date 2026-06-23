@@ -33,7 +33,9 @@ export default function LiveLeaderboard({ initialEntries, stops, reactionAvgs: i
       .channel('leaderboard-realtime')
       .on('postgres_changes', { event: '*', schema: 'public', table: 'scores' }, refetch)
       .on('postgres_changes', { event: '*', schema: 'public', table: 'minigame_results' }, refetch)
-      .subscribe()
+      .subscribe((status) => {
+        if (status === 'CHANNEL_ERROR') console.error('[Realtime] leaderboard channel error')
+      })
     return () => { supabase.removeChannel(channel) }
   }, [refetch])
 

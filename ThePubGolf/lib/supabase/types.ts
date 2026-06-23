@@ -16,9 +16,9 @@ export interface Database {
         Relationships: []
       }
       stops: {
-        Row: { id: string; position: number; pub_name: string; location: string; lat: number | null; lng: number | null; drink: string; mini_game: string; is_web_game: boolean; created_at: string }
-        Insert: { id?: string; position: number; pub_name: string; location: string; lat?: number | null; lng?: number | null; drink: string; mini_game: string; is_web_game?: boolean; created_at?: string }
-        Update: { id?: string; position?: number; pub_name?: string; location?: string; lat?: number | null; lng?: number | null; drink?: string; mini_game?: string; is_web_game?: boolean; created_at?: string }
+        Row: { id: string; position: number; pub_name: string; location: string; lat: number | null; lng: number | null; drink: string; mini_game: string; is_web_game: boolean; game_enabled: boolean; created_at: string }
+        Insert: { id?: string; position: number; pub_name: string; location: string; lat?: number | null; lng?: number | null; drink: string; mini_game: string; is_web_game?: boolean; game_enabled?: boolean; created_at?: string }
+        Update: { id?: string; position?: number; pub_name?: string; location?: string; lat?: number | null; lng?: number | null; drink?: string; mini_game?: string; is_web_game?: boolean; game_enabled?: boolean; created_at?: string }
         Relationships: []
       }
       scores: {

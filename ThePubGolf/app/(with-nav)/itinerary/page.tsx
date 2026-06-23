@@ -126,26 +126,40 @@ function PinnedStop({ stop }: { stop: Stop }) {
           </div>
         </div>
 
-        {/* Chalky CTA — printed-text feel, not pill button */}
-        <Link
-          href={`/play/${stop.id}`}
-          style={{
-            display: 'block',
-            padding: '11px 0',
-            background: '#1B3A2D',
-            color: '#F2E8C6',
+        {/* CTA */}
+        {stop.game_enabled ? (
+          <Link
+            href={`/play/${stop.id}`}
+            style={{
+              display: 'block',
+              padding: '11px 0',
+              background: '#1B3A2D',
+              color: '#F2E8C6',
+              textAlign: 'center',
+              fontFamily: 'var(--font-playfair, Georgia, serif)',
+              fontSize: '0.85rem', fontWeight: 700,
+              letterSpacing: '0.22em', textTransform: 'uppercase',
+              textDecoration: 'none',
+              borderRadius: 2,
+              border: '1px solid #2E6B47',
+              boxShadow: '2px 2px 0 rgba(0,0,0,0.18), -1px -1px 0 rgba(255,255,255,0.04)',
+            }}
+          >
+            Play Now
+          </Link>
+        ) : (
+          <div style={{
+            padding: '10px 0',
             textAlign: 'center',
-            fontFamily: 'var(--font-playfair, Georgia, serif)',
-            fontSize: '0.85rem', fontWeight: 700,
-            letterSpacing: '0.22em', textTransform: 'uppercase',
-            textDecoration: 'none',
+            fontFamily: 'var(--font-caveat, cursive)',
+            fontSize: '0.88rem', color: '#6B5A3E',
+            letterSpacing: '0.06em',
+            border: '1px dashed rgba(107,90,62,0.4)',
             borderRadius: 2,
-            border: '1px solid #2E6B47',
-            boxShadow: '2px 2px 0 rgba(0,0,0,0.18), -1px -1px 0 rgba(255,255,255,0.04)',
-          }}
-        >
-          Play Now
-        </Link>
+          }}>
+            🔒 Game locked — admin will open at the pub
+          </div>
+        )}
       </div>
     </div>
   )

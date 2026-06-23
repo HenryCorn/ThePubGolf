@@ -4,7 +4,7 @@ import { createClient } from '@/lib/supabase/server'
 export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const body = await req.json()
-  const allowed = ['pub_name', 'location', 'drink', 'mini_game', 'is_web_game', 'lat', 'lng'] as const
+  const allowed = ['pub_name', 'location', 'drink', 'mini_game', 'is_web_game', 'game_enabled', 'lat', 'lng'] as const
   const update: Record<string, unknown> = {}
   for (const key of allowed) {
     if (key in body) update[key] = body[key]
