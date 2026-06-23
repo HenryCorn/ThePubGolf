@@ -21,9 +21,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             {l.label}
           </Link>
         ))}
-        <Link href="/api/admin/logout" style={{ marginLeft: 'auto', color: '#e55', fontSize: '0.8rem', textDecoration: 'none' }}>
-          Sign out
-        </Link>
+        <form method="POST" action="/api/admin/logout" style={{ marginLeft: 'auto' }}>
+          <button type="submit" style={{
+            background: 'none', border: 'none', cursor: 'pointer',
+            color: '#e55', fontSize: '0.8rem', padding: 0,
+          }}>
+            Sign out
+          </button>
+        </form>
       </header>
       <main style={{ padding: '1.25rem', maxWidth: 700, margin: '0 auto' }}>
         {children}
