@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic'
 export default async function LeaderboardPage() {
   const supabase = await createClient()
 
-  const [{ data: teams }, { data: scores }, { data: stops }, { data: minigames }, { data: players }] =
+  const [teamsRes, scoresRes, stopsRes, minigamesRes, playersRes] =
     await Promise.all([
       supabase.from('teams').select('*, players(*)').order('name'),
       supabase.from('scores').select('*'),
@@ -15,6 +15,15 @@ export default async function LeaderboardPage() {
       supabase.from('minigame_results').select('player_id, avg_ms'),
       supabase.from('players').select('id, team_id'),
     ])
+
+  console.log('[leaderboard] teams:', JSON.stringify(teamsRes.data), 'error:', teamsRes.error?.message)
+  console.log('[leaderboard] scores:', JSON.stringify(scoresRes.data?.length), 'error:', scoresRes.error?.message)
+
+  const { data: teams } = teamsRes
+  const { data: scores } = scoresRes
+  const { data: stops } = stopsRes
+  const { data: minigames } = minigamesRes
+  const { data: players } = playersRes
 
   const entries = buildLeaderboard((teams as any) ?? [], scores ?? [])
   const reactionAvgs = computeTeamReactionAvgs(
