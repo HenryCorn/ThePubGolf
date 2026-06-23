@@ -7,29 +7,25 @@ export const dynamic = 'force-dynamic'
 export default async function LeaderboardPage() {
   const supabase = await createClient()
 
-  const [teamsRes, scoresRes, stopsRes, minigamesRes, playersRes] =
+  const [{ data: rawTeams }, { data: allPlayers }, { data: scores }, { data: stops }, { data: minigames }] =
     await Promise.all([
-      supabase.from('teams').select('*, players(*)').order('name'),
+      supabase.from('teams').select('*').order('name'),
+      supabase.from('players').select('*'),
       supabase.from('scores').select('*'),
       supabase.from('stops').select('id, position, pub_name').order('position'),
       supabase.from('minigame_results').select('player_id, avg_ms'),
-      supabase.from('players').select('id, team_id'),
     ])
 
-  console.log('[leaderboard] teams:', JSON.stringify(teamsRes.data), 'error:', teamsRes.error?.message)
-  console.log('[leaderboard] scores:', JSON.stringify(scoresRes.data?.length), 'error:', scoresRes.error?.message)
-
-  const { data: teams } = teamsRes
-  const { data: scores } = scoresRes
-  const { data: stops } = stopsRes
-  const { data: minigames } = minigamesRes
-  const { data: players } = playersRes
+  const teams = (rawTeams ?? []).map((team) => ({
+    ...team,
+    players: (allPlayers ?? []).filter((p) => p.team_id === team.id),
+  }))
 
   const entries = buildLeaderboard((teams as any) ?? [], scores ?? [])
   const reactionAvgs = computeTeamReactionAvgs(
-    (teams ?? []) as { id: string }[],
+    rawTeams ?? [],
     minigames ?? [],
-    (players ?? []) as { id: string; team_id: string | null }[]
+    (allPlayers ?? []) as { id: string; team_id: string | null }[]
   )
 
   return (

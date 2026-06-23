@@ -6,18 +6,23 @@ export const dynamic = 'force-dynamic'
 
 export async function GET() {
   const supabase = await createClient()
-  const [{ data: teams }, { data: scores }, { data: minigames }, { data: players }] = await Promise.all([
-    supabase.from('teams').select('*, players(*)').order('name'),
+  const [{ data: rawTeams }, { data: allPlayers }, { data: scores }, { data: minigames }] = await Promise.all([
+    supabase.from('teams').select('*').order('name'),
+    supabase.from('players').select('*'),
     supabase.from('scores').select('*'),
     supabase.from('minigame_results').select('player_id, avg_ms'),
-    supabase.from('players').select('id, team_id'),
   ])
+
+  const teams = (rawTeams ?? []).map((team) => ({
+    ...team,
+    players: (allPlayers ?? []).filter((p) => p.team_id === team.id),
+  }))
 
   const entries = buildLeaderboard((teams as any) ?? [], scores ?? [])
   const reactionAvgs = computeTeamReactionAvgs(
-    (teams ?? []) as { id: string }[],
+    rawTeams ?? [],
     minigames ?? [],
-    (players ?? []) as { id: string; team_id: string | null }[]
+    (allPlayers ?? []) as { id: string; team_id: string | null }[]
   )
 
   return NextResponse.json({ entries, reactionAvgs })
