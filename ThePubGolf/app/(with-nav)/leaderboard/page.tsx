@@ -2,7 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import { buildLeaderboard, computeTeamReactionAvgs } from '@/lib/utils/teams'
 import LiveLeaderboard from './LiveLeaderboard'
 
-export const revalidate = 0
+export const dynamic = 'force-dynamic'
 
 export default async function LeaderboardPage() {
   const supabase = await createClient()

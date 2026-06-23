@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { buildLeaderboard, computeTeamReactionAvgs } from '@/lib/utils/teams'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET() {
   const supabase = await createClient()
   const [{ data: teams }, { data: scores }, { data: minigames }, { data: players }] = await Promise.all([

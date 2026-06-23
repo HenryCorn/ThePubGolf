@@ -2,7 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import { buildLeaderboard } from '@/lib/utils/teams'
 import LiveStats from './LiveStats'
 
-export const revalidate = 0
+export const dynamic = 'force-dynamic'
 
 export default async function StatsPage() {
   const supabase = await createClient()
