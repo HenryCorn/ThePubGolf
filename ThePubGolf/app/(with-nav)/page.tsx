@@ -10,22 +10,9 @@ export default async function HomePage() {
 
   if (raw) {
     const payload = await verifySignedCookie<{ player_id: string }>(raw)
-    if (payload?.player_id) {
-      // Verify the player still exists — cookie outlives a reset
-      const supabase = await createClient()
-      const { data: existing } = await supabase
-        .from('players')
-        .select('id')
-        .eq('id', payload.player_id)
-        .single()
-
-      if (existing) {
-        redirect('/itinerary')
-      } else {
-        // Player was deleted (e.g. event reset) — clear the stale cookie
-        cookieStore.delete(PLAYER_COOKIE)
-      }
-    }
+    // Layout already verified the player exists in the DB before we get here.
+    // If the cookie is valid, the player is live — send them to the app.
+    if (payload?.player_id) redirect('/itinerary')
   }
 
   const supabase = await createClient()
