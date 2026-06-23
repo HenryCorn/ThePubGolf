@@ -1,6 +1,22 @@
 import type { Metadata, Viewport } from 'next'
+import { Playfair_Display, Caveat } from 'next/font/google'
 import SceneBG from '@/components/SceneBG'
 import './globals.css'
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-playfair',
+  weight: ['400', '700', '900'],
+  style: ['normal', 'italic'],
+})
+
+const caveat = Caveat({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-caveat',
+  weight: ['400', '700'],
+})
 
 export const metadata: Metadata = {
   title: 'Pub Golf',
@@ -17,7 +33,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${playfair.variable} ${caveat.variable}`}>
       <body>
         <SceneBG />
         {children}

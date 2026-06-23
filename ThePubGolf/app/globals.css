@@ -1,19 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #1666C4;
-  --color-primary-dark: #0A4099;
-  --color-primary-light: #3890E0;
-  --color-accent: #F4C430;
-  --color-bg: #070F1B;
-  --color-surface: #0C1728;
-  --color-surface-2: #132040;
-  --color-text: #D6ECFF;
-  --color-muted: #5879A0;
-  --color-border: #1A3055;
-  --color-danger: #e55;
-  --color-warning: #f90;
+  --color-primary: #1B3A2D;
+  --color-primary-dark: #132B20;
+  --color-primary-light: #2E6B47;
+  --color-accent: #C9A84C;
+  --color-accent-light: #E8C56A;
+  --color-bg: #1B3A2D;
+  --color-surface: #F2E8C6;
+  --color-surface-2: #E8D9A0;
+  --color-text: #F2E8C6;
+  --color-muted: #7A9A85;
+  --color-border: #3A6B50;
+  --color-danger: #8B2020;
+  --color-warning: #C9A84C;
 
+  --font-display: var(--font-playfair, Georgia, 'Times New Roman', serif);
+  --font-hand: var(--font-caveat, 'Segoe Script', cursive);
   --font-sans: system-ui, -apple-system, sans-serif;
 }
 
@@ -22,19 +25,18 @@
 }
 
 html {
-  background: #040912; /* darkest fallback for overscroll */
-  color: #e8f0ee;
-  font-family: system-ui, -apple-system, sans-serif;
+  background: #0F2018;
+  color: #F2E8C6;
+  font-family: Georgia, 'Times New Roman', serif;
   -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  background: transparent; /* SceneBG renders the actual background */
-  color: var(--color-text);
+  background: transparent;
+  color: #F2E8C6;
   min-height: 100dvh;
 }
 
-/* Smooth scrolling for the main content area */
 .scrollable {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;

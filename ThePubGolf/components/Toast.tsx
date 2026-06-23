@@ -15,13 +15,24 @@ export function Toast({ message, type = 'info', onDismiss }: ToastProps) {
   }, [onDismiss])
 
   const bg =
-    type === 'success' ? '#1666C4' : type === 'error' ? '#c0392b' : '#132040'
+    type === 'success' ? '#1B3A2D'
+    : type === 'error' ? '#8B1E1E'
+    : '#243F30'
 
   return (
     <div
-      className="fixed top-4 left-4 right-4 z-50 rounded-xl px-4 py-3 text-white text-sm font-medium shadow-lg"
-      style={{ background: bg, maxWidth: 480, margin: '0 auto' }}
       onClick={onDismiss}
+      style={{
+        position: 'fixed', top: 16, left: 16, right: 16, zIndex: 100,
+        background: bg, color: '#F2E8C6',
+        borderRadius: 3, padding: '12px 16px',
+        fontFamily: 'var(--font-caveat, cursive)',
+        fontSize: '1rem', fontWeight: 600,
+        boxShadow: '0 4px 16px rgba(0,0,0,0.4)',
+        border: '1px solid rgba(201,168,76,0.25)',
+        maxWidth: 480, margin: '0 auto',
+        cursor: 'pointer',
+      }}
     >
       {message}
     </div>
@@ -30,12 +41,7 @@ export function Toast({ message, type = 'info', onDismiss }: ToastProps) {
 
 export function useToast() {
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null)
-
-  const show = (message: string, type: 'success' | 'error' | 'info' = 'info') => {
-    setToast({ message, type })
-  }
-
+  const show = (message: string, type: 'success' | 'error' | 'info' = 'info') => setToast({ message, type })
   const dismiss = () => setToast(null)
-
   return { toast, show, dismiss }
 }
