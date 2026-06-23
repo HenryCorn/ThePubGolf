@@ -61,11 +61,13 @@ export default function TeamsClient({ teams: initialTeams, players }: Props) {
   }
 
   async function handleMovePlayer(playerId: string, targetTeamId: string) {
+    if (!targetTeamId) return
     startTransition(async () => {
+      const teamId = targetTeamId === '__unassign__' ? null : targetTeamId
       await fetch(`/api/admin/players/${playerId}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ team_id: targetTeamId || null }),
+        body: JSON.stringify({ team_id: teamId }),
       })
       router.refresh()
     })
@@ -116,16 +118,16 @@ export default function TeamsClient({ teams: initialTeams, players }: Props) {
           <h3 style={{ fontWeight: 600, marginBottom: '0.5rem', color: '#f9a825' }}>Unassigned players</h3>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {unassigned.map((p) => (
-              <div key={p.id} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <div key={p.id} style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
                 <span style={{ background: '#132040', borderRadius: 8, padding: '3px 8px', fontSize: '0.85rem' }}>
                   {p.emoji} {p.name}
                 </span>
                 <select
-                  onChange={(e) => handleMovePlayer(p.id, e.target.value)}
+                  onChange={(e) => { if (e.target.value) handleMovePlayer(p.id, e.target.value) }}
                   defaultValue=""
                   style={{ ...input, fontSize: '0.78rem' }}
                 >
-                  <option value="">Move to…</option>
+                  <option value="">Assign to…</option>
                   {initialTeams.map((t) => <option key={t.id} value={t.id}>{t.name}</option>)}
                 </select>
               </div>
@@ -178,7 +180,7 @@ export default function TeamsClient({ teams: initialTeams, players }: Props) {
                     {initialTeams.filter((t) => t.id !== team.id).map((t) => (
                       <option key={t.id} value={t.id}>{t.name}</option>
                     ))}
-                    <option value="">Remove from team</option>
+                    <option value="__unassign__">Remove from team</option>
                   </select>
                 </div>
               ))}
