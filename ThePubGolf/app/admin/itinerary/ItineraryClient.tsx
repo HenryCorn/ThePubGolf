@@ -130,6 +130,20 @@ export default function ItineraryClient({ stops: initialStops }: Props) {
     })
   }
 
+  async function handleSetActive(stop: Stop) {
+    // Tapping the active pub again clears it (we're between pubs).
+    const stopId = stop.is_active ? null : stop.id
+    startTransition(async () => {
+      const res = await fetch('/api/admin/stops/active', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ stopId }),
+      })
+      if (!res.ok) show('Failed to set current pub', 'error')
+      else { show(stopId ? `Now at ${stop.pub_name}` : 'Cleared current pub', 'success'); router.refresh() }
+    })
+  }
+
   const cardBg = '#132B20'
 
   return (
@@ -151,8 +165,9 @@ export default function ItineraryClient({ stops: initialStops }: Props) {
 
       {initialStops.map((stop, idx) => (
         <div key={stop.id} style={{
-          background: cardBg, borderRadius: 10, padding: '1rem',
-          border: `1px solid ${editingId === stop.id ? '#C9A84C' : 'rgba(201,168,76,0.2)'}`,
+          background: stop.is_active ? '#1B3A2D' : cardBg, borderRadius: 10, padding: '1rem',
+          border: `${stop.is_active ? 2 : 1}px solid ${stop.is_active ? '#F4C430' : editingId === stop.id ? '#C9A84C' : 'rgba(201,168,76,0.2)'}`,
+          boxShadow: stop.is_active ? '0 0 0 1px rgba(244,196,48,0.3), 0 4px 16px rgba(244,196,48,0.12)' : undefined,
           marginBottom: '0.65rem',
         }}>
           {editingId === stop.id ? (
@@ -183,6 +198,15 @@ export default function ItineraryClient({ stops: initialStops }: Props) {
               <div style={{ flex: 1 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2, flexWrap: 'wrap' }}>
                   <span style={{ fontWeight: 700, color: '#F2E8C6' }}>{stop.position}. {stop.pub_name}</span>
+                  {stop.is_active && (
+                    <span style={{
+                      background: '#F4C430', color: '#1B3A2D',
+                      fontSize: '0.65rem', fontWeight: 800, padding: '1px 6px', borderRadius: 4,
+                      letterSpacing: '0.04em',
+                    }}>
+                      📍 HERE NOW
+                    </span>
+                  )}
                   {stop.is_web_game && (
                     <span style={{
                       background: stop.game_enabled ? '#2E6B47' : '#3A3010',
@@ -218,6 +242,18 @@ export default function ItineraryClient({ stops: initialStops }: Props) {
                     Delete
                   </button>
                 </div>
+                <button
+                  onClick={() => handleSetActive(stop)}
+                  disabled={isPending}
+                  style={{
+                    ...btnStyle(stop.is_active ? '#F4C430' : '#1B3A2D'),
+                    color: stop.is_active ? '#1B3A2D' : '#F4C430',
+                    borderColor: '#F4C430',
+                    fontSize: '0.75rem', padding: '4px 10px', width: '100%', fontWeight: 700,
+                  }}
+                >
+                  {stop.is_active ? '📍 Here now — clear' : 'Set as current pub'}
+                </button>
                 {stop.is_web_game && (
                   <button
                     onClick={() => handleToggleGame(stop)}

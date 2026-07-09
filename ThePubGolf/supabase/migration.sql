@@ -1,5 +1,5 @@
 -- Pub Golf App — run this in Supabase SQL Editor
--- After running: enable Realtime on scores + minigame_results tables in the Supabase dashboard
+-- After running: enable Realtime on scores + minigame_results + stops tables in the Supabase dashboard
 
 create table if not exists teams (
   id uuid primary key default gen_random_uuid(),
@@ -33,9 +33,12 @@ create table if not exists stops (
   drink text not null,
   mini_game text not null,
   is_web_game boolean not null default false,
+  is_active boolean not null default false,
   created_at timestamptz not null default now()
 );
 create unique index if not exists stops_position_unique on stops (position);
+-- At most one "current" pub active at a time
+create unique index if not exists stops_single_active on stops (is_active) where is_active = true;
 
 create table if not exists scores (
   id uuid primary key default gen_random_uuid(),

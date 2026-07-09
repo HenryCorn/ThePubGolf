@@ -1,5 +1,5 @@
-import Link from 'next/link'
-
+// Admin nav uses <a> (not Next.js <Link>) — Link prefetches pages on load,
+// which caches stale data (e.g. empty teams list) and serves it after mutations.
 const navLinks = [
   { href: '/admin', label: 'Overview' },
   { href: '/admin/teams', label: 'Teams' },
@@ -23,12 +23,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           ⛳ Admin
         </span>
         {navLinks.map((l) => (
-          <Link key={l.href} href={l.href} style={{
+          <a key={l.href} href={l.href} style={{
             color: '#7A9A85', fontSize: '0.85rem', textDecoration: 'none',
             fontFamily: 'var(--font-caveat, cursive)',
           }}>
             {l.label}
-          </Link>
+          </a>
         ))}
         <form method="POST" action="/api/admin/logout" style={{ marginLeft: 'auto' }}>
           <button type="submit" style={{

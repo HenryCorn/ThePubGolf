@@ -1,6 +1,24 @@
 import { createClient } from '@/lib/supabase/server'
 import type { Stop } from '@/lib/supabase/types'
 import Link from 'next/link'
+import ItineraryRealtime from './ItineraryRealtime'
+
+function HereNowBanner() {
+  return (
+    <div style={{
+      display: 'inline-flex', alignItems: 'center', gap: 5,
+      background: '#1B3A2D', color: '#F4C430',
+      fontFamily: 'var(--font-playfair, Georgia, serif)',
+      fontSize: '0.7rem', fontWeight: 700,
+      letterSpacing: '0.16em', textTransform: 'uppercase',
+      padding: '3px 10px', borderRadius: 2,
+      marginBottom: '0.6rem',
+      boxShadow: '0 1px 4px rgba(0,0,0,0.25)',
+    }}>
+      📍 You are here
+    </div>
+  )
+}
 
 // Subtle variation — cards are NOT identical clones
 const CARD_VARIANTS = [
@@ -54,7 +72,7 @@ function Stamp({ children, tilt = 0 }: { children: string; tilt?: number }) {
   )
 }
 
-function PinnedStop({ stop }: { stop: Stop }) {
+function PinnedStop({ stop, active = false }: { stop: Stop; active?: boolean }) {
   const mapsUrl = stop.lat && stop.lng
     ? `https://maps.google.com/?q=${stop.lat},${stop.lng}`
     : `https://maps.google.com/?q=${encodeURIComponent(stop.location)}`
@@ -74,11 +92,14 @@ function PinnedStop({ stop }: { stop: Stop }) {
         background: '#EDD9A3',
         borderRadius: 3,
         padding: '1.2rem 1.1rem 1.1rem',
-        border: '1px solid #C4A050',
-        boxShadow: '0 8px 28px rgba(0,0,0,0.45), 0 2px 6px rgba(0,0,0,0.2)',
+        border: active ? '2px solid #F4C430' : '1px solid #C4A050',
+        boxShadow: active
+          ? '0 0 0 3px rgba(244,196,48,0.35), 0 8px 28px rgba(0,0,0,0.45)'
+          : '0 8px 28px rgba(0,0,0,0.45), 0 2px 6px rgba(0,0,0,0.2)',
         transform: 'rotate(-0.7deg)',
         position: 'relative', zIndex: 1,
       }}>
+        {active && <HereNowBanner />}
         {/* Game stop stamp — pinned at top-right, angled */}
         <div style={{ position: 'absolute', top: '0.85rem', right: '0.85rem', transform: 'rotate(10deg)' }}>
           <span style={{
@@ -165,7 +186,7 @@ function PinnedStop({ stop }: { stop: Stop }) {
   )
 }
 
-function StopCard({ stop, index }: { stop: Stop; index: number }) {
+function StopCard({ stop, index, active = false }: { stop: Stop; index: number; active?: boolean }) {
   const v = CARD_VARIANTS[index % CARD_VARIANTS.length]
   const mapsUrl = stop.lat && stop.lng
     ? `https://maps.google.com/?q=${stop.lat},${stop.lng}`
@@ -177,15 +198,16 @@ function StopCard({ stop, index }: { stop: Stop; index: number }) {
       borderRadius: 3,
       padding: '0.85rem 0.9rem',
       marginBottom: '0.6rem',
-      borderLeft: `4px solid ${v.leftAccent}`,
-      border: `1px solid rgba(122,92,16,0.2)`,
+      borderLeft: `4px solid ${active ? '#F4C430' : v.leftAccent}`,
+      border: active ? '2px solid #F4C430' : `1px solid rgba(122,92,16,0.2)`,
       borderLeftWidth: 4,
-      borderLeftColor: v.leftAccent,
-      boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+      borderLeftColor: active ? '#F4C430' : v.leftAccent,
+      boxShadow: active ? '0 0 0 3px rgba(244,196,48,0.3), 0 4px 12px rgba(0,0,0,0.25)' : '0 2px 8px rgba(0,0,0,0.2)',
     }}>
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
         <HoleBox n={stop.position} />
         <div style={{ flex: 1, minWidth: 0 }}>
+          {active && <HereNowBanner />}
           <h2 style={{
             fontFamily: 'var(--font-playfair, Georgia, serif)',
             fontSize: '1.05rem', fontWeight: 700,
@@ -257,10 +279,12 @@ export default async function ItineraryPage() {
       ) : (
         stops.map((stop, i) =>
           stop.is_web_game
-            ? <PinnedStop key={stop.id} stop={stop} />
-            : <StopCard key={stop.id} stop={stop} index={i} />
+            ? <PinnedStop key={stop.id} stop={stop} active={stop.is_active} />
+            : <StopCard key={stop.id} stop={stop} index={i} active={stop.is_active} />
         )
       )}
+
+      <ItineraryRealtime />
     </div>
   )
 }

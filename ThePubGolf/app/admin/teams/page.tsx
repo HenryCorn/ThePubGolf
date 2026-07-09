@@ -1,7 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import TeamsClient from './TeamsClient'
 
-export const revalidate = 0
+export const dynamic = 'force-dynamic'
 
 export default async function TeamsPage() {
   const supabase = await createClient()

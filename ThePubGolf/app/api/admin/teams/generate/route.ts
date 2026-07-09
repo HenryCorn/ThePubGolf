@@ -19,8 +19,10 @@ export async function POST(req: NextRequest) {
   if (players.length === 0) return NextResponse.json({ error: 'No players registered yet' }, { status: 400 })
 
   // Clear existing team assignments and teams
-  await supabase.from('players').update({ team_id: null }).neq('id', '')
-  await supabase.from('teams').delete().neq('id', '')
+  // (.neq('id','') causes a UUID cast error — use .not('id','is',null) instead)
+  await supabase.from('teams').update({ captain_id: null }).not('id', 'is', null)
+  await supabase.from('players').update({ team_id: null }).not('id', 'is', null)
+  await supabase.from('teams').delete().not('id', 'is', null)
 
   const names = generateTeamNames(numTeams)
   const groups = splitIntoTeams(players as Player[], numTeams)
