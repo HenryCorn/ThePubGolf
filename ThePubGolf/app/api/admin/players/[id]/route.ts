@@ -21,3 +21,17 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
 
   return NextResponse.json({ ok: true })
 }
+
+export async function DELETE(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+
+  const supabase = await createClient()
+
+  // Deleting the player cascades cleanly: teams.captain_id is ON DELETE SET NULL
+  // (captaincy is cleared if they held it) and minigame_results ON DELETE CASCADE
+  // (their reaction results go too). Team-level scores are unaffected.
+  const { error } = await supabase.from('players').delete().eq('id', id)
+  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+
+  return NextResponse.json({ ok: true })
+}

@@ -73,6 +73,15 @@ export default function TeamsClient({ teams: initialTeams, players }: Props) {
     })
   }
 
+  async function handleRemovePlayer(playerId: string, name: string) {
+    if (!confirm(`Remove ${name}? This deletes them from the event, their team, and any mini-game results. Team scores are unaffected.`)) return
+    startTransition(async () => {
+      const res = await fetch(`/api/admin/players/${playerId}`, { method: 'DELETE' })
+      if (!res.ok) show('Failed to remove player', 'error')
+      else reload()
+    })
+  }
+
   async function handleMovePlayer(playerId: string, targetTeamId: string) {
     if (!targetTeamId) return
     startTransition(async () => {
@@ -130,6 +139,13 @@ export default function TeamsClient({ teams: initialTeams, players }: Props) {
                   <option value="">Assign to…</option>
                   {initialTeams.map((t) => <option key={t.id} value={t.id}>{t.name}</option>)}
                 </select>
+                <button
+                  onClick={() => handleRemovePlayer(p.id, p.name)}
+                  disabled={isPending}
+                  style={{ ...btn('#4A1010'), fontSize: '0.78rem', padding: '4px 8px' }}
+                >
+                  Remove
+                </button>
               </div>
             ))}
           </div>
@@ -217,6 +233,13 @@ export default function TeamsClient({ teams: initialTeams, players }: Props) {
                       ))}
                       <option value="__unassign__">Unassign</option>
                     </select>
+                    <button
+                      onClick={() => handleRemovePlayer(p.id, p.name)}
+                      disabled={isPending}
+                      style={{ ...btn('#4A1010'), fontSize: '0.75rem', padding: '4px 8px' }}
+                    >
+                      Remove
+                    </button>
                   </div>
                 </div>
               ))}
